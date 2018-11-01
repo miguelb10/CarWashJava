@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="43dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="263dp"
+            android:layout_height="196dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/carwashlog"
+            tools:layout_editor_absoluteX="61dp"
+            tools:layout_editor_absoluteY="30dp" />
+
+        <EditText
+            android:id="@+id/txtCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:hint="@string/hint_correo"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="244dp" />
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:hint="@string/hint_contrase_a"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtCorreo" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="147dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/hint_btningresar"
+            tools:layout_editor_absoluteX="119dp"
+            tools:layout_editor_absoluteY="405dp" />
+        <Button
+            android:id="@+id/btnRegistrar"
+            android:layout_width="147dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignTop="@+id/button1"
+            android:layout_centerHorizontal="true"
+            android:text="@string/hint_btnregistrarse"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

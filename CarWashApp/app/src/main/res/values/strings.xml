@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CarWash</string>
+    <string name="hint_contrase_a">Contraseña</string>
+    <string name="hint_correo">Correo</string>
+    <string name="hint_btningresar">Ingresar</string>
+    <string name="hint_btnregistrarse">Registrarse</string>
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_apellido">Apellido</string>
+    <string name="hint_departamento">Departamento</string>
+    <string name="hint_tipo_de_documento">Tipo de documento</string>
+    <string name="hint_numero_de_documento">Numero de documento</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

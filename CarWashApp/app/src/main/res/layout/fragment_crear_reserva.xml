@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.CrearReservaFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/spnrVehiculo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+            <Spinner
+                android:id="@+id/spnrServicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+            <Spinner
+                android:id="@+id/spnrEmpresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+            <CalendarView
+                android:id="@+id/cvFecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </CalendarView>
+            <EditText
+                android:id="@+id/txtHora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Hora"/>
+            <Button
+                android:id="@+id/btnReservar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reservar"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
