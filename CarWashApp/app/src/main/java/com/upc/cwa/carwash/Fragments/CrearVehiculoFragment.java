@@ -1,6 +1,7 @@
 package com.upc.cwa.carwash.Fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -69,28 +70,35 @@ public class CrearVehiculoFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        AndroidNetworking.initialize(getContext());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_crear_vehiculo, container, false);
-        Button btnGuardarVehiculo = view.findViewById(R.id.btnGuardarVehiculo);
+        final View myView = inflater.inflate(R.layout.fragment_crear_vehiculo, container, false);
+        Button btnGuardarVehiculo = myView.findViewById(R.id.btnGuardarVehiculo);
         btnGuardarVehiculo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText txtMarca = view.findViewById(R.id.txtMarca);
-                EditText txtTipo = view.findViewById(R.id.txtTipo);
-                EditText txtPlaca = view.findViewById(R.id.txtPlaca);
+                EditText txtMarca = myView.findViewById(R.id.txtMarca);
+                EditText txtTipo = myView.findViewById(R.id.txtTipo);
+                EditText txtPlaca = myView.findViewById(R.id.txtPlaca);
                 Vehiculo objVehiculo = new Vehiculo();
                 objVehiculo.marca = txtMarca.getText().toString();
-                objVehiculo.tipo = txtTipo.getText().toString();
+                objVehiculo.tipo_vehiculo = txtTipo.getText().toString();
                 objVehiculo.placa = txtPlaca.getText().toString();
+                //Read user id from preferences
+                SharedPreferences prefs = getActivity().
+                        getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+                int storedUserID = prefs.getInt("UserID", 0);
 
-                AndroidNetworking.post("http://192.168.1.109:8090/api/vehiculo/")
-                        .addBodyParameter(objVehiculo) // posting java object
-                        .setTag("test")
+                AndroidNetworking.post("http://192.168.1.107:8090/api/vehiculo/{id}/save")
+                        .addPathParameter("id", String.valueOf(storedUserID))
+                        .addApplicationJsonBody(objVehiculo) // posting java object
+                        .setTag("vehiculo")
                         .setPriority(Priority.MEDIUM)
                         .build()
                         .getAsJSONObject(new JSONObjectRequestListener() {
@@ -109,7 +117,7 @@ public class CrearVehiculoFragment extends Fragment {
             }
         });
 
-        return view;
+        return myView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
