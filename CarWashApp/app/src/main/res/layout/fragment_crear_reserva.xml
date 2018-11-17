@@ -21,12 +21,12 @@
                 android:layout_height="wrap_content">
             </Spinner>
             <Spinner
-                android:id="@+id/spnrServicio"
+                android:id="@+id/spnrEmpresa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </Spinner>
             <Spinner
-                android:id="@+id/spnrEmpresa"
+                android:id="@+id/spnrServicio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </Spinner>

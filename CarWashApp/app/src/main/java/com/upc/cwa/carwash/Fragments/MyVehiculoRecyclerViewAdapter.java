@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.upc.cwa.carwash.Entities.Vehiculo;
 import com.upc.cwa.carwash.Fragments.VehiculoFragment.OnListFragmentInteractionListener;
 import com.upc.cwa.carwash.Fragments.dummy.DummyContent.DummyItem;
 import com.upc.cwa.carwash.R;
@@ -19,10 +20,10 @@ import java.util.List;
  */
 public class MyVehiculoRecyclerViewAdapter extends RecyclerView.Adapter<MyVehiculoRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Vehiculo> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyVehiculoRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyVehiculoRecyclerViewAdapter(List<Vehiculo> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -37,8 +38,11 @@ public class MyVehiculoRecyclerViewAdapter extends RecyclerView.Adapter<MyVehicu
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(Long.toString(mValues.get(position).id));
+        holder.mMarcaView.setText(mValues.get(position).marca);
+        holder.mTipoView.setText(mValues.get(position).tipo_vehiculo);
+        holder.mPlacaView.setText(mValues.get(position).placa);
+
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,19 +64,23 @@ public class MyVehiculoRecyclerViewAdapter extends RecyclerView.Adapter<MyVehicu
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+        public final TextView mMarcaView;
+        public final TextView mTipoView;
+        public final TextView mPlacaView;
+        public Vehiculo mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mMarcaView = (TextView) view.findViewById(R.id.marca_vehiculo);
+            mTipoView = (TextView) view.findViewById(R.id.tipo_vehiculo);
+            mPlacaView = (TextView) view.findViewById(R.id.placa_vehiculo);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mMarcaView.getText() + "'";
         }
     }
 }

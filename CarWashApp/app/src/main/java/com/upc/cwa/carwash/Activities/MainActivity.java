@@ -8,9 +8,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.upc.cwa.carwash.Entities.Vehiculo;
 import com.upc.cwa.carwash.Fragments.CrearReservaFragment;
 import com.upc.cwa.carwash.Fragments.CrearVehiculoFragment;
 import com.upc.cwa.carwash.Fragments.ReservaFragment;
@@ -33,22 +35,20 @@ implements CrearReservaFragment.OnFragmentInteractionListener,
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_vehicles:
-                    CrearVehiculoFragment crearVehiculoFragment = new CrearVehiculoFragment();
-                    replaceFragment(crearVehiculoFragment);
-                    /*VehiculoFragment vehiculoFragment = new VehiculoFragment();
-                    replaceFragment(vehiculoFragment);*/
+                    VehiculoFragment vehiculoFragment = new VehiculoFragment();
+                    replaceFragment(vehiculoFragment);
                     return true;
                 case R.id.navigation_reservations:
-                    CrearReservaFragment crearReservaFragment = new CrearReservaFragment();
-                    replaceFragment(crearReservaFragment);
-                    /*ReservaFragment reservaFragment = new ReservaFragment();
-                    replaceFragment(reservaFragment);*/
+                    ReservaFragment reservaFragment = new ReservaFragment();
+                    replaceFragment(reservaFragment);
                     return true;
                 case R.id.navigation_news:
-                    mTextMessage.setText("3");
+                    CrearVehiculoFragment crearVehiculoFragment = new CrearVehiculoFragment();
+                    replaceFragment(crearVehiculoFragment);
                     return true;
                 case R.id.navigation_questions:
-                    mTextMessage.setText("4");
+                    CrearReservaFragment crearReservaFragment = new CrearReservaFragment();
+                    replaceFragment(crearReservaFragment);
                     return true;
                 case R.id.navigation_profile:
                     mTextMessage.setText("5");
@@ -75,13 +75,28 @@ implements CrearReservaFragment.OnFragmentInteractionListener,
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        CrearVehiculoFragment crearVehiculoFragment = new CrearVehiculoFragment();
-        replaceFragment(crearVehiculoFragment);
+        VehiculoFragment vehiculoFragment = new VehiculoFragment();
+        replaceFragment(vehiculoFragment);
     }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    /*@Override
+    public void onNuevoVehiculoPressed() {
+        CrearVehiculoFragment crearVehiculoFragment = new CrearVehiculoFragment();
+        replaceFragment(crearVehiculoFragment);
+    }*/
+
+
+
+
+
+    @Override
+    public void onListFragmentInteraction(Vehiculo item) {
+        Log.d("test", item.placa);
     }
 
     @Override

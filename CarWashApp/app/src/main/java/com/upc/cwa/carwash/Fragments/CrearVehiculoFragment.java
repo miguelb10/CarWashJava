@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -83,9 +84,9 @@ public class CrearVehiculoFragment extends Fragment {
         btnGuardarVehiculo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText txtMarca = myView.findViewById(R.id.txtMarca);
-                EditText txtTipo = myView.findViewById(R.id.txtTipo);
-                EditText txtPlaca = myView.findViewById(R.id.txtPlaca);
+                final EditText txtMarca = myView.findViewById(R.id.txtMarca);
+                final EditText txtTipo = myView.findViewById(R.id.txtTipo);
+                final EditText txtPlaca = myView.findViewById(R.id.txtPlaca);
                 Vehiculo objVehiculo = new Vehiculo();
                 objVehiculo.marca = txtMarca.getText().toString();
                 objVehiculo.tipo_vehiculo = txtTipo.getText().toString();
@@ -95,7 +96,7 @@ public class CrearVehiculoFragment extends Fragment {
                         getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
                 int storedUserID = prefs.getInt("UserID", 0);
 
-                AndroidNetworking.post("http://192.168.1.107:8090/api/vehiculo/{id}/save")
+                AndroidNetworking.post("http://192.168.1.4:8090/api/vehiculo/{id}/save")
                         .addPathParameter("id", String.valueOf(storedUserID))
                         .addApplicationJsonBody(objVehiculo) // posting java object
                         .setTag("vehiculo")
@@ -105,12 +106,21 @@ public class CrearVehiculoFragment extends Fragment {
                             @Override
                             public void onResponse(JSONObject response) {
                                 Log.println(Log.ERROR, "Success", "It worked!!");
+                                Toast.makeText(getContext(),
+                                        "Vehículo guardado!",
+                                        Toast.LENGTH_SHORT).show();
+                                txtMarca.getText().clear();
+                                txtTipo.getText().clear();
+                                txtPlaca.getText().clear();
                             }
 
                             @Override
                             public void onError(ANError error) {
                                 Log.println(Log.ASSERT, "Error", "Some error" + error.getErrorBody()
                                         + " - " + error.getErrorDetail() + " - " + error.getResponse());
+                                Toast.makeText(getContext(),
+                                        "Error! Contacte al administrador.",
+                                        Toast.LENGTH_SHORT).show();
                             }
                         })
                 ;
