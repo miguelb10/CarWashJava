@@ -34,8 +34,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -99,7 +101,7 @@ public class CrearReservaFragment extends Fragment {
         AndroidNetworking.initialize(getActivity().getApplicationContext());
 
         final Spinner spnrVehiculo = view.findViewById(R.id.spnrVehiculo);
-        AndroidNetworking.get("http://192.168.1.4:8090/api/vehiculo/cliente/{userId}")
+        AndroidNetworking.get("http://192.168.1.109:8090/api/vehiculo/cliente/{userId}")
                 .addPathParameter("userId", Integer.toString(storedUserID))
                 .setTag("vehiculos")
                 .setPriority(Priority.LOW)
@@ -137,7 +139,7 @@ public class CrearReservaFragment extends Fragment {
                 });
 
         final Spinner spnrEmpresa = view.findViewById(R.id.spnrEmpresa);
-        AndroidNetworking.get("http://192.168.1.4:8090/api/empresas")
+        AndroidNetworking.get("http://192.168.1.109:8090/api/empresas")
                 .setTag("empresas")
                 .setPriority(Priority.LOW)
                 .build()
@@ -177,7 +179,7 @@ public class CrearReservaFragment extends Fragment {
         spnrEmpresa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, final View view, int position, long empresaID) {
-                AndroidNetworking.get("http://192.168.1.4:8090/api/servicios/empresa/{id}")
+                AndroidNetworking.get("http://192.168.1.109:8090/api/servicios/empresa/{id}")
                         .addPathParameter("id", Long.toString(empresaID))
                         .setTag("servicios")
                         .setPriority(Priority.LOW)
@@ -230,13 +232,17 @@ public class CrearReservaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Reserva objReserva = new Reserva();
-                objReserva.fecha = new Date(cvFecha.getDate());
+
+                SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+                String fechaform = DATE_FORMAT.format(cvFecha.getDate());
+
+                objReserva.fecha = fechaform;
                 objReserva.hora = txtHora.getText().toString();
                 objReserva.idservicio = spnrServicio.getSelectedItemId();
                 objReserva.idvehiculo = spnrVehiculo.getSelectedItemId();
                 objReserva.calificacion = 0.0;
 
-                AndroidNetworking.post("http://192.168.1.4:8090/api/reserva/{idvehiculo}/{idservicio}/save")
+                AndroidNetworking.post("http://192.168.1.109:8090/api/reserva/{idvehiculo}/{idservicio}/save")
                         .addPathParameter("idvehiculo", Long.toString(objReserva.idvehiculo))
                         .addPathParameter("idservicio", Long.toString(objReserva.idservicio))
                         .addApplicationJsonBody(objReserva)

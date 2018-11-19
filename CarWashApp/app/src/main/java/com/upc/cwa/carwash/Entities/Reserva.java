@@ -6,7 +6,7 @@ public class Reserva {
     public long id;
     public long idvehiculo;
     public long idservicio;
-    public Date fecha;
+    public String fecha;
     public String hora;
     public String estado;
     public String comentario;
