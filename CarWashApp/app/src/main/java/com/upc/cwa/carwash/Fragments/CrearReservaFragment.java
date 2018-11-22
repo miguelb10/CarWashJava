@@ -235,7 +235,7 @@ public class CrearReservaFragment extends Fragment {
             public void onClick(View view) {
                 Reserva objReserva = new Reserva();
 
-                SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
                 String fechaform = DATE_FORMAT.format(cvFecha.getDate());
 
                 objReserva.fecha = fechaform;
