@@ -12,19 +12,24 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.upc.cwa.carwash.Entities.Reserva;
 import com.upc.cwa.carwash.Entities.Vehiculo;
 import com.upc.cwa.carwash.Fragments.CrearReservaFragment;
 import com.upc.cwa.carwash.Fragments.CrearVehiculoFragment;
+import com.upc.cwa.carwash.Fragments.DetalleReservaFragment;
+import com.upc.cwa.carwash.Fragments.DetalleVehiculoFragment;
 import com.upc.cwa.carwash.Fragments.ReservaFragment;
 import com.upc.cwa.carwash.Fragments.VehiculoFragment;
-import com.upc.cwa.carwash.Fragments.dummy.DummyContent;
+
 import com.upc.cwa.carwash.R;
 
 public class MainActivity extends AppCompatActivity
 implements CrearReservaFragment.OnFragmentInteractionListener,
         CrearVehiculoFragment.OnFragmentInteractionListener,
         VehiculoFragment.OnListFragmentInteractionListener,
-        ReservaFragment.OnListFragmentInteractionListener{
+        ReservaFragment.OnListFragmentInteractionListener,
+        DetalleVehiculoFragment.OnFragmentInteractionListener,
+        DetalleReservaFragment.OnFragmentInteractionListener{
 
     private TextView mTextMessage;
 
@@ -34,24 +39,21 @@ implements CrearReservaFragment.OnFragmentInteractionListener,
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_vehicles:
+                case R.id.navigation_lista_vehiculos:
                     VehiculoFragment vehiculoFragment = new VehiculoFragment();
                     replaceFragment(vehiculoFragment);
                     return true;
-                case R.id.navigation_reservations:
+                case R.id.navigation_lista_reservas:
                     ReservaFragment reservaFragment = new ReservaFragment();
                     replaceFragment(reservaFragment);
                     return true;
-                case R.id.navigation_news:
+                case R.id.navigation_crear_vehiculos:
                     CrearVehiculoFragment crearVehiculoFragment = new CrearVehiculoFragment();
                     replaceFragment(crearVehiculoFragment);
                     return true;
-                case R.id.navigation_questions:
+                case R.id.navigation_crear_reservas:
                     CrearReservaFragment crearReservaFragment = new CrearReservaFragment();
                     replaceFragment(crearReservaFragment);
-                    return true;
-                case R.id.navigation_profile:
-                    mTextMessage.setText("5");
                     return true;
             }
             return false;
@@ -84,23 +86,29 @@ implements CrearReservaFragment.OnFragmentInteractionListener,
 
     }
 
-    /*@Override
-    public void onNuevoVehiculoPressed() {
-        CrearVehiculoFragment crearVehiculoFragment = new CrearVehiculoFragment();
-        replaceFragment(crearVehiculoFragment);
-    }*/
-
-
-
-
-
     @Override
-    public void onListFragmentInteraction(Vehiculo item) {
-        Log.d("test", item.placa);
+    public void onEliminarVehiculoPressed() {
+        VehiculoFragment vehiculoFragment = new VehiculoFragment();
+        replaceFragment(vehiculoFragment);
     }
 
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+    public void onEliminarReservaPressed() {
+        ReservaFragment reservaFragment = new ReservaFragment();
+        replaceFragment(reservaFragment);
+    }
 
+
+
+    @Override
+    public void onListFragmentInteraction(Vehiculo vehiculo) {
+        Fragment fragment = DetalleVehiculoFragment.newInstance(vehiculo.id);
+        replaceFragment(fragment);
+    }
+
+    @Override
+    public void onListFragmentInteraction(Reserva reserva) {
+        Fragment fragment = DetalleReservaFragment.newInstance(reserva.id);
+        replaceFragment(fragment);
     }
 }

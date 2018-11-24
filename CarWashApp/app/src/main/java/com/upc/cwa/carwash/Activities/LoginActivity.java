@@ -29,7 +29,6 @@ public class LoginActivity extends AppCompatActivity {
         final EditText txtEmail = findViewById(R.id.txtCorreo);
         final EditText txtContrasena = findViewById(R.id.txtPassword);
 
-        //Read email from preferences
         SharedPreferences prefs = getSharedPreferences("MyPreferences", MODE_PRIVATE);
         String storedEmail = prefs.getString("email", null);
         txtEmail.setText(storedEmail);
@@ -39,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                AndroidNetworking.get("http://192.168.1.107:8090/api/cliente/{email}/{contrasenia}")
+                AndroidNetworking.get("http://192.168.1.2:8090/api/cliente/{email}/{contrasenia}")
                         .addPathParameter("email", txtEmail.getText().toString())
                         .addPathParameter("contrasenia", txtContrasena.getText().toString())
                         .setTag("login")

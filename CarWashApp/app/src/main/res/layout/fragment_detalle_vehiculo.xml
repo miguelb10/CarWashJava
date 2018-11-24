@@ -3,37 +3,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.CrearVehiculoFragment">
+    tools:context=".Fragments.DetalleVehiculoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <EditText
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_marca"
+            android:textSize="30dp"/>
+
+        <TextView
             android:id="@+id/txtMarca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_marca"/>
+            android:textSize="20dp"/>
 
-        <EditText
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_tipo_vehiculo"
+            android:textSize="30dp"/>
+
+        <TextView
             android:id="@+id/txtTipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_tipo_vehiculo"/>
+            android:textSize="20dp"/>
 
-        <EditText
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_placa"
+        android:textSize="30dp"/>
+
+        <TextView
             android:id="@+id/txtPlaca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_placa"/>
+            android:textSize="20dp"/>
 
         <Button
-            android:id="@+id/btnGuardarVehiculo"
+            android:id="@+id/btnEliminarVehiculo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_guardar"/>
+            android:text="@string/btn_eliminar"/>
+
 
     </LinearLayout>
 

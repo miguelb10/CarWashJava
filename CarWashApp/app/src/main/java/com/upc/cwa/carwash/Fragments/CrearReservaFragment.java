@@ -103,7 +103,7 @@ public class CrearReservaFragment extends Fragment {
         AndroidNetworking.initialize(getActivity().getApplicationContext());
 
         final Spinner spnrVehiculo = view.findViewById(R.id.spnrVehiculo);
-        AndroidNetworking.get("http://192.168.1.107:8090/api/vehiculo/cliente/{userId}")
+        AndroidNetworking.get("http://192.168.1.2:8090/api/vehiculo/cliente/{userId}")
                 .addPathParameter("userId", Integer.toString(storedUserID))
                 .setTag("vehiculos")
                 .setPriority(Priority.LOW)
@@ -141,7 +141,7 @@ public class CrearReservaFragment extends Fragment {
                 });
 
         final Spinner spnrEmpresa = view.findViewById(R.id.spnrEmpresa);
-        AndroidNetworking.get("http://192.168.1.107:8090/api/empresas")
+        AndroidNetworking.get("http://192.168.1.2:8090/api/empresas")
                 .setTag("empresas")
                 .setPriority(Priority.LOW)
                 .build()
@@ -181,7 +181,7 @@ public class CrearReservaFragment extends Fragment {
         spnrEmpresa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, final View view, int position, long empresaID) {
-                AndroidNetworking.get("http://192.168.1.107:8090/api/servicios/empresa/{id}")
+                AndroidNetworking.get("http://192.168.1.2:8090/api/servicios/empresa/{id}")
                         .addPathParameter("id", Long.toString(empresaID))
                         .setTag("servicios")
                         .setPriority(Priority.LOW)
@@ -244,7 +244,7 @@ public class CrearReservaFragment extends Fragment {
                 objReserva.idvehiculo = spnrVehiculo.getSelectedItemId();
                 objReserva.calificacion = 0.0;
 
-                AndroidNetworking.post("http://192.168.1.107:8090/api/reserva/{idvehiculo}/{idservicio}/save")
+                AndroidNetworking.post("http://192.168.1.2:8090/api/reserva/{idvehiculo}/{idservicio}/save")
                         .addPathParameter("idvehiculo", Long.toString(objReserva.idvehiculo))
                         .addPathParameter("idservicio", Long.toString(objReserva.idservicio))
                         .addApplicationJsonBody(objReserva)

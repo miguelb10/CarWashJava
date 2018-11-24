@@ -47,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
                 objCliente.tipo_documento = txtTipoDoc.getText().toString();
                 objCliente.num_documento = txtNumDoc.getText().toString();
 
-                AndroidNetworking.post("http://192.168.1.4:8090/api/cliente/register")
+                AndroidNetworking.post("http://192.168.1.2:8090/api/cliente/register")
                         .addApplicationJsonBody(objCliente) // posting java object
                         .setTag("cliente")
                         .setPriority(Priority.LOW)
@@ -55,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
                         .getAsJSONObject(new JSONObjectRequestListener() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                // do anything with response
+
                                 Log.println(Log.ASSERT, "Success", "It worked!!!");
                                 Intent intent =
                                         new Intent(getApplicationContext(), LoginActivity.class);

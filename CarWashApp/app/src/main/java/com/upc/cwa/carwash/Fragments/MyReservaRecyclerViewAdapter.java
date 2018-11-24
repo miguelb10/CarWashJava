@@ -6,23 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.upc.cwa.carwash.Entities.Reserva;
 import com.upc.cwa.carwash.Fragments.ReservaFragment.OnListFragmentInteractionListener;
-import com.upc.cwa.carwash.Fragments.dummy.DummyContent.DummyItem;
+
 import com.upc.cwa.carwash.R;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class MyReservaRecyclerViewAdapter extends RecyclerView.Adapter<MyReservaRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Reserva> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyReservaRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyReservaRecyclerViewAdapter(List<Reserva> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -37,15 +34,15 @@ public class MyReservaRecyclerViewAdapter extends RecyclerView.Adapter<MyReserva
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(Long.toString(mValues.get(position).id));
+        holder.mVehiculoView.setText(mValues.get(position).vehiculo.marca);
+        holder.mEmpresaView.setText(mValues.get(position).servicio.empresa.nombre);
+        holder.mServicioView.setText(mValues.get(position).servicio.nombre);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
                     mListener.onListFragmentInteraction(holder.mItem);
                 }
             }
@@ -60,19 +57,24 @@ public class MyReservaRecyclerViewAdapter extends RecyclerView.Adapter<MyReserva
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+        public final TextView mVehiculoView;
+        public final TextView mServicioView;
+        public final TextView mEmpresaView;
+
+        public Reserva mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mVehiculoView = (TextView) view.findViewById(R.id.vehiculo_reserva);
+            mServicioView = (TextView) view.findViewById(R.id.servicio_reserva);
+            mEmpresaView = (TextView) view.findViewById(R.id.empresa_reserva);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mVehiculoView.getText() + "'";
         }
     }
 }

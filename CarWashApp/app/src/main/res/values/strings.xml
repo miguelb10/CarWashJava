@@ -9,11 +9,26 @@
     <string name="hint_departamento">Departamento</string>
     <string name="hint_tipo_de_documento">Tipo de documento</string>
     <string name="hint_numero_de_documento">Numero de documento</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">¡Bienvenido a CarWash!</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_hora">Hora</string>
+    <string name="hint_marca">Marca</string>
+    <string name="hint_tipo_vehiculo">Tipo</string>
+    <string name="hint_placa">Placa</string>
+    <string name="btn_guardar">Guardar</string>
+    <string name="title_vehiculo">Vehículo</string>
+    <string name="title_empresa">Empresa</string>
+    <string name="title_servicio">Servicio</string>
+    <string name="title_fecha">Fecha</string>
+    <string name="title_hora">Hora</string>
+    <string name="title_estado">Estado</string>
+    <string name="btn_eliminar">Eliminar</string>
+    <string name="title_marca">Marca</string>
+    <string name="title_tipo_vehiculo">Tipo</string>
+    <string name="title_placa">Placa</string>
 </resources>

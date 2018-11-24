@@ -19,8 +19,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.upc.cwa.carwash.Entities.Vehiculo;
 import com.upc.cwa.carwash.R;
-import com.upc.cwa.carwash.Fragments.dummy.DummyContent;
-import com.upc.cwa.carwash.Fragments.dummy.DummyContent.DummyItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,28 +29,19 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
- */
+
 public class VehiculoFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
+
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
+
     public VehiculoFragment() {
     }
 
-    // TODO: Customize parameter initialization
+
     @SuppressWarnings("unused")
     public static VehiculoFragment newInstance(int columnCount) {
         VehiculoFragment fragment = new VehiculoFragment();
@@ -80,7 +69,7 @@ public class VehiculoFragment extends Fragment {
                 getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         int storedUserID = prefs.getInt("UserID", 0);
 
-        AndroidNetworking.get("http://192.168.1.4:8090/api/vehiculo/cliente/{userID}")
+        AndroidNetworking.get("http://192.168.1.2:8090/api/vehiculo/cliente/{userID}")
                 .addPathParameter("userID", Long.toString(storedUserID))
                 .setTag("vehiculos")
                 .setPriority(Priority.LOW)
@@ -108,7 +97,6 @@ public class VehiculoFragment extends Fragment {
                                 } else {
                                     recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
                                 }
-                                //List<Booking> myBookings = Booking.listAll(Booking.class);
                                 recyclerView.setAdapter(new MyVehiculoRecyclerViewAdapter(vehiculos, mListener));
                             }
                         } catch (JSONException e) {
@@ -145,18 +133,8 @@ public class VehiculoFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(Vehiculo item);
 
     }

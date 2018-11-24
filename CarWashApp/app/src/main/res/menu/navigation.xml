@@ -2,28 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_vehicles"
-        android:icon="@drawable/ic_local_car_wash_black_24dp"
-        android:title="Vehículos" />
+        android:id="@+id/navigation_lista_vehiculos"
+        android:icon="@drawable/ic_directions_car_black_24dp"
+        android:title="Mis vehículos" />
 
     <item
-        android:id="@+id/navigation_reservations"
+        android:id="@+id/navigation_lista_reservas"
         android:icon="@drawable/ic_date_range_black_24dp"
-        android:title="Reservas" />
+        android:title="Mis reservas" />
 
     <item
-        android:id="@+id/navigation_news"
-        android:icon="@drawable/ic_fiber_new_black_24dp"
-        android:title="Novedades" />
+        android:id="@+id/navigation_crear_vehiculos"
+        android:icon="@drawable/ic_add_circle_black_24dp"
+        android:title="Crear vehículo" />
 
     <item
-        android:id="@+id/navigation_questions"
-        android:icon="@drawable/ic_live_help_black_24dp"
-        android:title="Preguntas" />
+        android:id="@+id/navigation_crear_reservas"
+        android:icon="@drawable/ic_local_car_wash_black_24dp"
+        android:title="Crear reserva" />
 
-    <item
-        android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_person_black_24dp"
-        android:title="Perfil" />
+
 
 </menu>

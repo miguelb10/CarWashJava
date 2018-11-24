@@ -7,4 +7,5 @@ public class Servicio {
     public float precio;
     public long idempresa;
     public long idservicio;
+    public Empresa empresa;
 }
