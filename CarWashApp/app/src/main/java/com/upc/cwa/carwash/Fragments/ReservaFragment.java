@@ -74,7 +74,7 @@ public class ReservaFragment extends Fragment {
                 getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         int storedUserID = prefs.getInt("UserID", 0);
 
-        AndroidNetworking.get("http://192.168.1.2:8090/api/reserva/cliente/{userID}")
+        AndroidNetworking.get("http://100.77.26.79:8090/api/reserva/cliente/{userID}")
                 .addPathParameter("userID", Long.toString(storedUserID))
                 .setTag("reservas")
                 .setPriority(Priority.LOW)

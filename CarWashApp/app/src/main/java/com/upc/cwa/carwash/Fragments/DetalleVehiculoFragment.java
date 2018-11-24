@@ -78,7 +78,7 @@ public class DetalleVehiculoFragment extends Fragment {
         readBundle(getArguments());
 
         AndroidNetworking.initialize(getActivity().getApplicationContext());
-        AndroidNetworking.get("http://192.168.1.2:8090/api/vehiculo/{id}")
+        AndroidNetworking.get("http://100.77.26.79:8090/api/vehiculo/{id}")
                 .addPathParameter("id", Long.toString(storedVehiculoID))
                 .setTag("vehiculo")
                 .setPriority(Priority.LOW)
@@ -110,7 +110,7 @@ public class DetalleVehiculoFragment extends Fragment {
                 builder.setPositiveButton("SÍ", new DialogInterface.OnClickListener(){
 
                     public void onClick(final DialogInterface dialog, int which) {
-                        AndroidNetworking.delete("http://192.168.1.2:8090/api/vehiculo/{id}/delete")
+                        AndroidNetworking.delete("http://100.77.26.79:8090/api/vehiculo/{id}/delete")
                                 .addPathParameter("id", Long.toString(storedVehiculoID))
                                 .setTag("vehiculo")
                                 .setPriority(Priority.MEDIUM)

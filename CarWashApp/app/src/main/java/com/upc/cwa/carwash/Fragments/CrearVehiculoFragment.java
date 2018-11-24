@@ -96,7 +96,7 @@ public class CrearVehiculoFragment extends Fragment {
                         getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
                 int storedUserID = prefs.getInt("UserID", 0);
 
-                AndroidNetworking.post("http://192.168.1.2:8090/api/vehiculo/{id}/save")
+                AndroidNetworking.post("http://100.77.26.79:8090/api/vehiculo/{id}/save")
                         .addPathParameter("id", String.valueOf(storedUserID))
                         .addApplicationJsonBody(objVehiculo) // posting java object
                         .setTag("vehiculo")

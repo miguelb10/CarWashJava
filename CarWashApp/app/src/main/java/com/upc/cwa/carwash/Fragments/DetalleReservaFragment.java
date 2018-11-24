@@ -81,7 +81,7 @@ public class DetalleReservaFragment extends Fragment {
         readBundle(getArguments());
 
         AndroidNetworking.initialize(getActivity().getApplicationContext());
-        AndroidNetworking.get("http://192.168.1.2:8090/api/reserva/{id}")
+        AndroidNetworking.get("http://100.77.26.79:8090/api/reserva/{id}")
                 .addPathParameter("id", Long.toString(storedReservaID))
                 .setTag("reserva")
                 .setPriority(Priority.LOW)
@@ -119,7 +119,7 @@ public class DetalleReservaFragment extends Fragment {
                 builder.setPositiveButton("SÍ", new DialogInterface.OnClickListener(){
 
                     public void onClick(final DialogInterface dialog, int which) {
-                        AndroidNetworking.delete("http://192.168.1.2:8090/api/reserva/{id}/delete")
+                        AndroidNetworking.delete("http://100.77.26.79:8090/api/reserva/{id}/delete")
                                 .addPathParameter("id", Long.toString(storedReservaID))
                                 .setTag("reserva")
                                 .setPriority(Priority.MEDIUM)
